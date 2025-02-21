@@ -21,7 +21,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/Yiling-J/theine-go/internal/xruntime"
+	"github.com/kellen-miller/theine-go/internal/xruntime"
 )
 
 // slow-down guard

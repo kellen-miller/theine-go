@@ -3,8 +3,8 @@ package internal
 import (
 	"math"
 
-	"github.com/Yiling-J/theine-go/internal/hasher"
-	"github.com/Yiling-J/theine-go/internal/xruntime"
+	"github.com/kellen-miller/theine-go/internal/hasher"
+	"github.com/kellen-miller/theine-go/internal/xruntime"
 )
 
 const (

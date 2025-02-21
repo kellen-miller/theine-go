@@ -10,7 +10,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Yiling-J/theine-go"
+	"github.com/kellen-miller/theine-go"
 	"github.com/stretchr/testify/require"
 	"golang.org/x/sync/errgroup"
 )

@@ -5,7 +5,7 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/Yiling-J/theine-go/internal/clock"
+	"github.com/kellen-miller/theine-go/internal/clock"
 )
 
 type Serializer[T any] interface {

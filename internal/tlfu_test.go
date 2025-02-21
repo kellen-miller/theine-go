@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Yiling-J/theine-go/internal/hasher"
+	"github.com/kellen-miller/theine-go/internal/hasher"
 	"github.com/stretchr/testify/require"
 )
 
@@ -351,7 +351,8 @@ func TestTlfu_Weight(t *testing.T) {
 			result := strings.Join(
 				[]string{
 					tlfu.window.display(), tlfu.slru.probation.display(),
-					tlfu.slru.protected.display()}, ":")
+					tlfu.slru.protected.display(),
+				}, ":")
 
 			require.Equal(t, cs.expected, result)
 
@@ -485,7 +486,8 @@ func grouped(tlfu *TinyLfu[int, int]) (string, int) {
 	result := strings.Join(
 		[]string{
 			windowSeq, probationSeq,
-			protectedSeq}, ":")
+			protectedSeq,
+		}, ":")
 	return result, total
 }
 

@@ -19,7 +19,7 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/Yiling-J/theine-go/internal/xruntime"
+	"github.com/kellen-miller/theine-go/internal/xruntime"
 )
 
 // pool for P tokens

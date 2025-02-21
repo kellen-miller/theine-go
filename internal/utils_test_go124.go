@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/Yiling-J/theine-go/internal/hasher"
+	"github.com/kellen-miller/theine-go/internal/hasher"
 	"github.com/stretchr/testify/require"
 )
 

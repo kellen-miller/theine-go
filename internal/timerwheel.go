@@ -4,7 +4,7 @@ import (
 	"math/bits"
 	"time"
 
-	"github.com/Yiling-J/theine-go/internal/clock"
+	"github.com/kellen-miller/theine-go/internal/clock"
 )
 
 func next2Power(x uint) uint {
@@ -112,7 +112,12 @@ func (tw *TimerWheel[K, V]) advance(now int64, remove func(entry *Entry[K, V], r
 	}
 }
 
-func (tw *TimerWheel[K, V]) expire(index int, prevTicks int64, delta int64, remove func(entry *Entry[K, V], reason RemoveReason)) {
+func (tw *TimerWheel[K, V]) expire(
+	index int,
+	prevTicks int64,
+	delta int64,
+	remove func(entry *Entry[K, V], reason RemoveReason),
+) {
 	mask := tw.buckets[index] - 1
 	steps := tw.buckets[index]
 	if delta < int64(steps) {

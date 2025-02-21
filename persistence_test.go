@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Yiling-J/theine-go"
+	"github.com/kellen-miller/theine-go"
 	"github.com/stretchr/testify/require"
 )
 
@@ -44,7 +44,10 @@ func TestPersist_Basic(t *testing.T) {
 }
 
 func TestPersist_LoadingBasic(t *testing.T) {
-	client, err := theine.NewBuilder[int, int](100).BuildWithLoader(func(ctx context.Context, key int) (theine.Loaded[int], error) {
+	client, err := theine.NewBuilder[int, int](100).BuildWithLoader(func(
+		ctx context.Context,
+		key int,
+	) (theine.Loaded[int], error) {
 		return theine.Loaded[int]{Value: key, Cost: 1, TTL: 0}, nil
 	})
 	require.Nil(t, err)
@@ -60,7 +63,10 @@ func TestPersist_LoadingBasic(t *testing.T) {
 
 	f, err = os.Open("ptest")
 	require.Nil(t, err)
-	new, err := theine.NewBuilder[int, int](100).BuildWithLoader(func(ctx context.Context, key int) (theine.Loaded[int], error) {
+	new, err := theine.NewBuilder[int, int](100).BuildWithLoader(func(
+		ctx context.Context,
+		key int,
+	) (theine.Loaded[int], error) {
 		return theine.Loaded[int]{Value: key, Cost: 1, TTL: 0}, nil
 	})
 	require.Nil(t, err)

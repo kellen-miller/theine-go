@@ -5,8 +5,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/Yiling-J/theine-go"
-	"github.com/Yiling-J/theine-go/internal"
+	"github.com/kellen-miller/theine-go"
+	"github.com/kellen-miller/theine-go/internal"
 	"github.com/stretchr/testify/require"
 )
 

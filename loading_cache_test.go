@@ -11,7 +11,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Yiling-J/theine-go"
+	"github.com/kellen-miller/theine-go"
 	"github.com/stretchr/testify/require"
 )
 
@@ -277,7 +277,10 @@ func TestLoadingCache_RemovalListener(t *testing.T) {
 
 func TestLoadingCache_Range(t *testing.T) {
 	for _, cap := range []int{100, 200000} {
-		client, err := theine.NewBuilder[int, int](int64(cap)).BuildWithLoader(func(ctx context.Context, key int) (theine.Loaded[int], error) {
+		client, err := theine.NewBuilder[int, int](int64(cap)).BuildWithLoader(func(
+			ctx context.Context,
+			key int,
+		) (theine.Loaded[int], error) {
 			return theine.Loaded[int]{Value: key, Cost: 1, TTL: 0}, nil
 		})
 		require.Nil(t, err)
@@ -305,7 +308,10 @@ func TestLoadingCache_Range(t *testing.T) {
 
 func TestLoadingCache_GetSetDeleteNoRace(t *testing.T) {
 	for _, size := range []int{500, 100000} {
-		client, err := theine.NewBuilder[string, string](int64(size)).BuildWithLoader(func(ctx context.Context, key string) (theine.Loaded[string], error) {
+		client, err := theine.NewBuilder[string, string](int64(size)).BuildWithLoader(func(
+			ctx context.Context,
+			key string,
+		) (theine.Loaded[string], error) {
 			return theine.Loaded[string]{Value: key, Cost: 1, TTL: 0}, nil
 		})
 		ctx := context.TODO()

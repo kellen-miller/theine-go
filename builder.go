@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 
-	"github.com/Yiling-J/theine-go/internal"
+	"github.com/kellen-miller/theine-go/internal"
 )
 
 type params interface {
@@ -109,7 +109,8 @@ func (b *Builder[K, V]) Build() (*Cache[K, V], error) {
 	if err := validateParams(&b.baseParams); err != nil {
 		return nil, err
 	}
-	store := internal.NewStore(b.maxsize, b.doorkeeper, b.useEntryPool, b.removalListener, b.cost, nil, 0, 0, b.stringKeyFunc)
+	store := internal.NewStore(b.maxsize, b.doorkeeper, b.useEntryPool, b.removalListener, b.cost, nil, 0, 0,
+		b.stringKeyFunc)
 	return &Cache[K, V]{store: store}, nil
 }
 
@@ -138,14 +139,20 @@ func (b *Builder[K, V]) Hybrid(cache internal.SecondaryCache[K, V]) *HybridBuild
 }
 
 // BuildWithLoader builds a loading cache client from builder with custom loader function.
-func (b *Builder[K, V]) BuildWithLoader(loader func(ctx context.Context, key K) (Loaded[V], error)) (*LoadingCache[K, V], error) {
+func (b *Builder[K, V]) BuildWithLoader(
+	loader func(
+		ctx context.Context,
+		key K,
+	) (Loaded[V], error),
+) (*LoadingCache[K, V], error) {
 	if b.maxsize <= 0 {
 		return nil, errors.New("size must be positive")
 	}
 	if loader == nil {
 		return nil, errors.New("loader function required")
 	}
-	store := internal.NewStore(b.maxsize, b.doorkeeper, b.useEntryPool, b.removalListener, b.cost, nil, 0, 0, b.stringKeyFunc)
+	store := internal.NewStore(b.maxsize, b.doorkeeper, b.useEntryPool, b.removalListener, b.cost, nil, 0, 0,
+		b.stringKeyFunc)
 	loadingStore := internal.NewLoadingStore(store)
 	loadingStore.Loader(func(ctx context.Context, key K) (internal.Loaded[V], error) {
 		v, err := loader(ctx, key)
@@ -176,7 +183,8 @@ func (b *LoadingBuilder[K, V]) Build() (*LoadingCache[K, V], error) {
 	if err := validateParams(&b.baseParams, &b.loadingParams); err != nil {
 		return nil, err
 	}
-	store := internal.NewStore(b.maxsize, b.doorkeeper, b.useEntryPool, b.removalListener, b.cost, nil, 0, 0, b.stringKeyFunc)
+	store := internal.NewStore(b.maxsize, b.doorkeeper, b.useEntryPool, b.removalListener, b.cost, nil, 0, 0,
+		b.stringKeyFunc)
 	loadingStore := internal.NewLoadingStore(store)
 	loadingStore.Loader(func(ctx context.Context, key K) (internal.Loaded[V], error) {
 		v, err := b.loader(ctx, key)

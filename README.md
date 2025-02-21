@@ -52,7 +52,7 @@ To mitigate this, Theine rechecks the key first when updating the policy, but th
 simple cache:
 
 ```GO
-import "github.com/Yiling-J/theine-go"
+import "github.com/kellen-miller/theine-go"
 
 // key type string, value type string, max size 1000
 // max size is the only required configuration to build a client
@@ -93,7 +93,7 @@ builder.RemovalListener(func(key K, value V, reason theine.RemoveReason) {})
 loading cache:
 
 ```go
-import "github.com/Yiling-J/theine-go"
+import "github.com/kellen-miller/theine-go"
 
 // loader function: func(ctx context.Context, key K) (theine.Loaded[V], error)
 // Loaded struct should include cache value, cost and ttl, which required by Set method

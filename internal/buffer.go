@@ -20,7 +20,7 @@ import (
 	"sync/atomic"
 	"unsafe"
 
-	"github.com/Yiling-J/theine-go/internal/xruntime"
+	"github.com/kellen-miller/theine-go/internal/xruntime"
 )
 
 const (

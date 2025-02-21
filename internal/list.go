@@ -7,7 +7,7 @@ import (
 	"io"
 	"strings"
 
-	"github.com/Yiling-J/theine-go/internal/hasher"
+	"github.com/kellen-miller/theine-go/internal/hasher"
 )
 
 const (
@@ -207,7 +207,13 @@ func (l *List[K, V]) Contains(entry *Entry[K, V]) bool {
 	return false
 }
 
-func (l *List[K, V]) Persist(writer io.Writer, blockEncoder *gob.Encoder, sketch *CountMinSketch, hasher *hasher.Hasher[K], tp uint8) error {
+func (l *List[K, V]) Persist(
+	writer io.Writer,
+	blockEncoder *gob.Encoder,
+	sketch *CountMinSketch,
+	hasher *hasher.Hasher[K],
+	tp uint8,
+) error {
 	buffer := bytes.NewBuffer(make([]byte, 0, BlockBufferSize))
 	block := NewBlock[*Pentry[K, V]](tp, buffer, blockEncoder)
 	for er := l.Front(); er != nil; er = er.Next(l.listType) {

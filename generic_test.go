@@ -3,7 +3,7 @@ package theine_test
 import (
 	"testing"
 
-	"github.com/Yiling-J/theine-go"
+	"github.com/kellen-miller/theine-go"
 	"github.com/stretchr/testify/require"
 )
 

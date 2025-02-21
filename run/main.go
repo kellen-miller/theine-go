@@ -11,7 +11,7 @@ import (
 
 	_ "net/http/pprof"
 
-	"github.com/Yiling-J/theine-go"
+	"github.com/kellen-miller/theine-go"
 	// "github.com/go-echarts/statsview"
 )
 

@@ -14,9 +14,9 @@ import (
 
 	"github.com/zeebo/xxh3"
 
-	"github.com/Yiling-J/theine-go/internal/bf"
-	"github.com/Yiling-J/theine-go/internal/hasher"
-	"github.com/Yiling-J/theine-go/internal/xruntime"
+	"github.com/kellen-miller/theine-go/internal/bf"
+	"github.com/kellen-miller/theine-go/internal/hasher"
+	"github.com/kellen-miller/theine-go/internal/xruntime"
 )
 
 type RemoveReason uint8
@@ -138,8 +138,15 @@ type Store[K comparable, V any] struct {
 
 // New returns a new data struct with the specified capacity
 func NewStore[K comparable, V any](
-	maxsize int64, doorkeeper bool, entryPool bool, listener func(key K, value V, reason RemoveReason),
-	cost func(v V) int64, secondaryCache SecondaryCache[K, V], workers int, probability float32, stringKeyFunc func(k K) string,
+	maxsize int64,
+	doorkeeper bool,
+	entryPool bool,
+	listener func(key K, value V, reason RemoveReason),
+	cost func(v V) int64,
+	secondaryCache SecondaryCache[K, V],
+	workers int,
+	probability float32,
+	stringKeyFunc func(k K) string,
 ) *Store[K, V] {
 	hasher := hasher.NewHasher(stringKeyFunc)
 	shardCount := 1
@@ -333,7 +340,15 @@ func (s *Store[K, V]) setEntry(hash uint64, shard *Shard[K, V], cost int64, entr
 
 }
 
-func (s *Store[K, V]) setShard(shard *Shard[K, V], hash uint64, key K, value V, cost int64, expire int64, nvmClean bool) (*Shard[K, V], *Entry[K, V], bool) {
+func (s *Store[K, V]) setShard(
+	shard *Shard[K, V],
+	hash uint64,
+	key K,
+	value V,
+	cost int64,
+	expire int64,
+	nvmClean bool,
+) (*Shard[K, V], *Entry[K, V], bool) {
 	exist, ok := shard.get(key)
 
 	if ok {
@@ -397,7 +412,13 @@ func (s *Store[K, V]) setShard(shard *Shard[K, V], hash uint64, key K, value V, 
 
 }
 
-func (s *Store[K, V]) setInternal(key K, value V, cost int64, expire int64, nvmClean bool) (*Shard[K, V], *Entry[K, V], bool) {
+func (s *Store[K, V]) setInternal(
+	key K,
+	value V,
+	cost int64,
+	expire int64,
+	nvmClean bool,
+) (*Shard[K, V], *Entry[K, V], bool) {
 	h, index := s.index(key)
 	shard := s.shards[index]
 	shard.mu.Lock()

@@ -1,4 +1,4 @@
-module github.com/Yiling-J/theine-go
+module github.com/kellen-miller/theine-go
 
 go 1.20
 

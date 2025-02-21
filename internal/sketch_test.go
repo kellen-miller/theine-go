@@ -6,8 +6,8 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/Yiling-J/theine-go/internal/hasher"
 	"github.com/cespare/xxhash/v2"
+	"github.com/kellen-miller/theine-go/internal/hasher"
 	"github.com/stretchr/testify/require"
 	"github.com/zeebo/xxh3"
 )

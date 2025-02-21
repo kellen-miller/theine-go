@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Yiling-J/theine-go/internal/clock"
+	"github.com/kellen-miller/theine-go/internal/clock"
 	"github.com/stretchr/testify/require"
 )
 
